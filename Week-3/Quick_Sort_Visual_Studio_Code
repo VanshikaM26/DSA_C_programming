@@ -1,0 +1,46 @@
+#include <stdio.h>
+int partition(int arr[],int low,int high){
+    int i=low;
+    int j=high;
+    int pivot=arr[low];
+    int temp;
+    while(i<j){
+        while(i<=j && arr[i]<=pivot)
+            i++;
+        while(j>=low && arr[j]>pivot)
+        j--;
+        if(i<j){
+        temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+            
+        }
+    }
+    temp=arr[low];
+    arr[low]=arr[j];
+    arr[j]=temp;
+    return j;
+}
+void quickSort(int arr[],int low,int high){
+    if (low<high){
+        int p=partition(arr,low,high);
+        quickSort(arr,low,p-1);
+        quickSort(arr,p+1,high);
+    }
+}
+int main(){
+    int arr[100],n,i;
+    printf("Enter the number of elements : \n");
+    scanf("%d",&n);
+    printf("Enter the %d elements : ",n);
+    for(i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+        
+    }
+    quickSort(arr,0,n-1);
+    printf("Sorted array : \n");
+    for(i=0;i<n;i++)
+    printf("%d ",arr[i]);
+    return 0;
+}
+    
