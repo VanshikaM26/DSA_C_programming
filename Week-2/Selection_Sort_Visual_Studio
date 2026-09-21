@@ -1,0 +1,32 @@
+#include <stdio.h>
+void selectionSort(int arr[],int n){
+    int i,j,min,temp,index;
+    for(i=0;i<n-1;i++){
+        min=arr[i];
+        index=i;
+        for(j=i+1;j<n;j++){
+            if(arr[i]>arr[j]){
+                min=arr[j];
+                index=j;
+            }
+        }
+        temp=arr[i];
+        arr[i]=arr[index];
+        arr[index]=temp;
+    }
+}
+int main(){
+    int arr[100],n,i;
+    printf("Enter the number of elements : \n");
+    scanf("%d",&n);
+    printf("Enter the %d elements : ",n);
+    for(i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    selectionSort(arr,n);
+    printf("Sorted array : ");
+    for(i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+    
+}
