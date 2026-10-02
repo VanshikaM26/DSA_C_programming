@@ -1,0 +1,33 @@
+int partition(int nums[],int low,int high){
+    int pivot=nums[low];
+    int i=low;
+    int j=high;
+    int temp;
+    while(i<j){
+        while(i<=high && nums[i]<=pivot)
+        i++;
+        while(j>=low && nums[j]>pivot)
+        j--;
+        if(i<j){
+            temp=nums[i];
+            nums[i]=nums[j];
+            nums[j]=temp;
+        }
+    }
+    temp=nums[low];
+    nums[low]=nums[j];
+    nums[j]=temp;
+    return j;
+}
+void quickSort(int nums[],int low,int high)
+{
+    if(low<=high){
+        int p=partition(nums,low,high);
+        quickSort(nums,low,p-1);
+        quickSort(nums,p+1,high);
+    }
+    }
+
+void sortColors(int* nums, int numsSize) {
+    quickSort(nums,0,numsSize-1);
+}
